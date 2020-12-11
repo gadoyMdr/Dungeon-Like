@@ -41,6 +41,7 @@ public class LevelsUI : MonoBehaviour
         GameObject.FindObjectsOfType<PuzzleCollectionButton>().Where(x => x.id == 0).ToArray()[0].LoadCollectionPuzzles();
     }
 
+    //Display all levels
     void CreateCollectionButtons()
     {
         int counter = 0;

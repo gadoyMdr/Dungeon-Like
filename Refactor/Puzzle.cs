@@ -82,6 +82,10 @@ namespace Scripts.Refactor {
                             Position = new Vector2Int (i, lineIndex),
                             Type = ParseTileType (line[i])
                         };
+
+                        if (int.TryParse(line[i].ToString(), out int bar)) //if char is int
+                            tileEncoding.Id = bar;
+
                         tileEncodings.Add (tileEncoding);
                     }
 
@@ -102,6 +106,18 @@ namespace Scripts.Refactor {
                     return PuzzleTileType.Pusher | PuzzleTileType.Floor;
                 case '_':
                     return PuzzleTileType.Floor;
+                case 'B':
+                    return PuzzleTileType.Box | PuzzleTileType.Floor;
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    return PuzzleTileType.Goal | PuzzleTileType.Floor;
                 default:
                     return PuzzleTileType.None;
             }

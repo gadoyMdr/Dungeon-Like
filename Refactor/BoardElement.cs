@@ -8,7 +8,7 @@ namespace Scripts.Refactor {
         [SerializeField]
         protected TilesTheme[] tilesThemeArray;
 
-        [HideInInspector]
+        
         public BoardEmplacement parentBoardEmplacement;
 
         SpriteRenderer spriteRenderer;

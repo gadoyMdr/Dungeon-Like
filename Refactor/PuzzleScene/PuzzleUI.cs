@@ -12,16 +12,9 @@ public class PuzzleUI : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
 
-    private BoardBootstrapper currentBoardBootstraper;
-    private GameTimer currentGameTimer;
-    private PlayerMovementsSaver currentPlayerMovements;
 
     private void Awake()
     {
-        currentBoardBootstraper = GameObject.FindObjectOfType<BoardBootstrapper>();
-        currentGameTimer = GameObject.FindObjectOfType<GameTimer>();
-        currentPlayerMovements = GameObject.FindObjectOfType<PlayerMovementsSaver>();
-
         pause.performed += _ => TogglePauseMenu();
         pauseMenu.SetActive(false);
     }
@@ -43,10 +36,9 @@ public class PuzzleUI : MonoBehaviour
         else Time.timeScale = 1f;
     }
 
-    public void SaveAndGoMainMenu()
+    void SaveAndGoMainMenu()
     {
-        currentBoardBootstraper._puzzle.AddOrReplaceInfoField(PuzzleInfoField.playerMovements, currentPlayerMovements.playersMovement);
-        currentBoardBootstraper._puzzle.AddOrReplaceInfoField(PuzzleInfoField.time, currentGameTimer.time.ToString());
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 }
